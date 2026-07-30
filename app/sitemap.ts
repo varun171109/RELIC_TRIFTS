@@ -1,12 +1,13 @@
 import { MetadataRoute } from "next";
-import { products } from "@/data/products";
+import { getAllProducts } from "@/lib/sanity/queries";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://example.com";
-  const staticRoutes = ["", "/shop", "/about", "/contact", "/login", "/register"].map((route) => ({
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const base = "https://relic-trifts.vercel.app";
+  const staticRoutes = ["", "/shop", "/about", "/contact"].map((route) => ({
     url: `${base}${route}`,
     lastModified: new Date(),
   }));
+  const products = await getAllProducts();
   const productRoutes = products.map((p) => ({
     url: `${base}/product/${p.id}`,
     lastModified: new Date(),
