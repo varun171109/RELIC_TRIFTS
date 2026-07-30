@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { siteConfig } from "@/config/site";
+import { buildWhatsAppLink, whatsAppMessageForCart } from "@/lib/whatsapp";
 
 export default function CartDrawer() {
   const { items, isOpen, setIsOpen, updateQuantity, removeFromCart, subtotal } = useCart();
@@ -100,6 +101,14 @@ export default function CartDrawer() {
             <Link href="/cart" onClick={() => setIsOpen(false)} className="btn-primary w-full">
               View Bag & Checkout
             </Link>
+            <a
+              href={buildWhatsAppLink(whatsAppMessageForCart(items, subtotal))}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full border border-sage/50 text-sage-dark dark:text-sage-light rounded-tag py-2.5 text-xs font-medium hover:bg-sage/10 transition-colors"
+            >
+              Order via WhatsApp
+            </a>
           </div>
         )}
       </aside>

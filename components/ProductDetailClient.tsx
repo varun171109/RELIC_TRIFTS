@@ -8,6 +8,7 @@ import { siteConfig } from "@/config/site";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import ProductCard from "@/components/ProductCard";
+import { buildWhatsAppLink, whatsAppMessageForProduct } from "@/lib/whatsapp";
 
 const conditionInfo: Record<Product["condition"], { score: number; note: string }> = {
   "Like New": { score: 5, note: "No visible signs of wear. Looks fresh out of the store." },
@@ -151,6 +152,18 @@ export default function ProductDetailClient({
               </svg>
             </button>
           </div>
+
+          <a
+            href={buildWhatsAppLink(whatsAppMessageForProduct(product))}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex items-center justify-center gap-2 w-full border border-sage/50 text-sage-dark dark:text-sage-light rounded-tag py-3 text-sm font-medium hover:bg-sage/10 transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.7.8-.8 1-.1.2-.3.2-.5.1-1.5-.7-2.4-1.3-3.4-2.9-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5L9.1 8.1c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z" />
+            </svg>
+            Order via WhatsApp
+          </a>
 
           <p className="text-xs text-ink/45 dark:text-bone/45 mt-4">
             Only 1 of this piece in stock — once it sells, it's gone for good.

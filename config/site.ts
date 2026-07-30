@@ -22,6 +22,10 @@ export const siteConfig = {
   phone: "+91 98765 43210",
   address: "12 Thrift Lane, Chennai, Tamil Nadu, India",
 
+  // WhatsApp number used for "Order via WhatsApp" buttons.
+  // Country code + number, no spaces, no "+" (e.g. "919585171109").
+  whatsappNumber: "919585171109",
+
   socials: {
     instagram: "https://instagram.com/abcthrifting",
     tiktok: "https://tiktok.com/@abcthrifting",
